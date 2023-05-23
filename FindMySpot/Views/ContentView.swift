@@ -21,10 +21,11 @@ struct ContentView: View {
     @State private var annotations: [MKPointAnnotation] = []
     @State private var isPark = true
     @State private var buttonTitle = "PARK HERE"
+    @State private var showAlert = false
     
     private let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.dateFormat = "EEEE, MMM d YYYY"
+        formatter.dateFormat = "EEEE, MMM d"
         return formatter
     }()
 
@@ -42,6 +43,7 @@ struct ContentView: View {
         VStack{
             
             HStack {
+                
                 Text("FindMySpot")
                     .font(.largeTitle)
                 .bold()
@@ -68,9 +70,10 @@ struct ContentView: View {
                             .shadow(radius: 15)
                             
                             VStack {
-                                Text("\(dateFormatter.string(from: Date()))")
+                                Text("\(dateFormatter.string(from: Date()))\(daySuffix(from: Date()))")
                                     .font(.title2)
                                 .padding(.top, -50)
+                                .foregroundColor(.white)
                             }
                         }
                         
@@ -91,32 +94,56 @@ struct ContentView: View {
                                 }
                             }) {
                                 Text(buttonTitle)
-                                    .font(.title)
+                                    .font(.title2)
                                     .fontWeight(.bold)
-                                    .frame(width: 340, height: 16)
+                                    .frame(width: 300, height: 16)
                                     .padding()
                                     .background(Color.blue)
                                     .foregroundColor(.white)
                                     .cornerRadius(10)
                             }
-                            .padding(.top, 45)
+                            .alert(isPresented: $showAlert){
+                                Alert(title: Text("FINISHED"),
+                                      message: Text("Click follow coordinate button on the top left to Park again"),
+                                      dismissButton: .default(Text("OK")))
+                            }
+                            .padding(.top, 60)
                         }
                     }
 
                 }
                 .ignoresSafeArea()
-            }    
+            }
         }
+        .navigationBarBackButtonHidden(true)
         .onAppear{
             loadCoordinates()
+                
         }
     }
         
+    func daySuffix(from date: Date) -> String {
+        let calendar = Calendar.current
+        let dayOfMonth = calendar.component(.day, from: date)
+        
+        switch dayOfMonth {
+        case 1, 21, 31:
+            return "st"
+        case 2, 22:
+            return "nd"
+        case 3, 23:
+            return "rd"
+        default:
+            return "th"
+        }
+    }
+    
     private func saveCoordinates(){
         let location = locationManager.currentLocation
         UserDefaults.standard.set(location?.coordinate.latitude, forKey: "Latitude")
         UserDefaults.standard.set(location?.coordinate.longitude, forKey: "Longitude")
         loadCoordinates()
+        
     }
     
     private func loadCoordinates(){
@@ -141,7 +168,9 @@ struct ContentView: View {
             latitude = 0.0
             print("Saved latitude: \(latitude)")
         }
+        showAlert = true
     }
+        
 }
 
 struct ContentView_Previews: PreviewProvider {

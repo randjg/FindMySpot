@@ -14,6 +14,8 @@
 		831BC7CF2A1D169400DDE11C /* MKCoordinateRegion+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831BC7CE2A1D169400DDE11C /* MKCoordinateRegion+Extensions.swift */; };
 		831BC7D32A1D16BC00DDE11C /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831BC7D22A1D16BC00DDE11C /* LocationManager.swift */; };
 		831BC7D62A1D16DC00DDE11C /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831BC7D52A1D16DC00DDE11C /* MapView.swift */; };
+		831BC7D82A1D279300DDE11C /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831BC7D72A1D279300DDE11C /* SplashScreenView.swift */; };
+		831BC7DA2A1D291E00DDE11C /* pin.json in Resources */ = {isa = PBXBuildFile; fileRef = 831BC7D92A1D291E00DDE11C /* pin.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,8 @@
 		831BC7CE2A1D169400DDE11C /* MKCoordinateRegion+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKCoordinateRegion+Extensions.swift"; sourceTree = "<group>"; };
 		831BC7D22A1D16BC00DDE11C /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		831BC7D52A1D16DC00DDE11C /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		831BC7D72A1D279300DDE11C /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
+		831BC7D92A1D291E00DDE11C /* pin.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = pin.json; path = FindMySpot/pin.json; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +66,7 @@
 				831BC7CD2A1D168100DDE11C /* Extensions */,
 				831BC7BF2A1D15B600DDE11C /* FindMySpotApp.swift */,
 				831BC7C32A1D15B700DDE11C /* Assets.xcassets */,
+				831BC7D92A1D291E00DDE11C /* pin.json */,
 				831BC7C52A1D15B700DDE11C /* Preview Content */,
 			);
 			path = FindMySpot;
@@ -96,6 +101,7 @@
 			children = (
 				831BC7C12A1D15B600DDE11C /* ContentView.swift */,
 				831BC7D52A1D16DC00DDE11C /* MapView.swift */,
+				831BC7D72A1D279300DDE11C /* SplashScreenView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -116,6 +122,8 @@
 			dependencies = (
 			);
 			name = FindMySpot;
+			packageProductDependencies = (
+			);
 			productName = FindMySpot;
 			productReference = 831BC7BC2A1D15B600DDE11C /* FindMySpot.app */;
 			productType = "com.apple.product-type.application";
@@ -144,6 +152,8 @@
 				Base,
 			);
 			mainGroup = 831BC7B32A1D15B600DDE11C;
+			packageReferences = (
+			);
 			productRefGroup = 831BC7BD2A1D15B600DDE11C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -160,6 +170,7 @@
 			files = (
 				831BC7C72A1D15B700DDE11C /* Preview Assets.xcassets in Resources */,
 				831BC7C42A1D15B700DDE11C /* Assets.xcassets in Resources */,
+				831BC7DA2A1D291E00DDE11C /* pin.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,6 +186,7 @@
 				831BC7D62A1D16DC00DDE11C /* MapView.swift in Sources */,
 				831BC7CF2A1D169400DDE11C /* MKCoordinateRegion+Extensions.swift in Sources */,
 				831BC7C02A1D15B600DDE11C /* FindMySpotApp.swift in Sources */,
+				831BC7D82A1D279300DDE11C /* SplashScreenView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,14 +318,16 @@
 				DEVELOPMENT_TEAM = 68FYPQ879D;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Find My Spot";
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "This app requires access to your location";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app requires access to your location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -338,14 +352,16 @@
 				DEVELOPMENT_TEAM = 68FYPQ879D;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Find My Spot";
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "This app requires access to your location";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app requires access to your location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -24,7 +24,6 @@ struct MapView: UIViewRepresentable{
     }
     
     func updateUIView(_ uiView: MKMapView, context: Context) {
-//        guard let location = location else { return }
         
         uiView.showsCompass = true
         uiView.showsUserLocation = true
@@ -37,13 +36,6 @@ struct MapView: UIViewRepresentable{
             uiView.addSubview(userTrackingButton)
         }
         
-//        if let heading = locationManager.userHeading{
-//            uiView.camera.heading = heading.trueHeading
-//            uiView.camera.pitch = 0.0
-//            uiView.setCamera(uiView.camera, animated: true)
-//        }
-//
-//        let span = MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03)
         let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 600, longitudinalMeters: 600)
         uiView.setRegion(region, animated: true)
         
