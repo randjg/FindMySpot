@@ -43,8 +43,8 @@ struct MapView: UIViewRepresentable{
 //            uiView.setCamera(uiView.camera, animated: true)
 //        }
 //
-        let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
-        let region = MKCoordinateRegion(center: coordinate, span: span)
+//        let span = MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03)
+        let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 600, longitudinalMeters: 600)
         uiView.setRegion(region, animated: true)
         
         uiView.removeAnnotations(uiView.annotations)
@@ -53,14 +53,7 @@ struct MapView: UIViewRepresentable{
         annotation.coordinate = coordinate
         annotation.title = annotationTitle
         uiView.addAnnotation(annotation)
-//
-//        if let annotationView = uiView.view(for: annotation) as? MKMarkerAnnotationView{
-//            annotationView.markerTintColor = .red
-//            annotationView.glyphImage = UIImage(systemName: "location.fill")
-//        }
-        
-//        let coordinateRegion = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: 300, longitudinalMeters: 300)
-//        uiView.setRegion(coordinateRegion, animated: true)
     }
     
 }
+

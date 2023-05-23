@@ -31,19 +31,7 @@ class LocationManager: NSObject, ObservableObject {
 extension LocationManager: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else { return }
-        
-        
-//        DispatchQueue.main.async {
-//            self.location = location
-//        }
-//        DispatchQueue.main.async {
-//            self.currentLocation = location
-////            self.locationManager.stopUpdatingLocation()
-//        }
         self.currentLocation = location
-        
-        
-//        locationManager.stopUpdatingLocation()
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error, didUpdateHeading newHeading: CLHeading) {

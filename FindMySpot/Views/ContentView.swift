@@ -19,14 +19,19 @@ struct ContentView: View {
     @State private var longitude: Double = 0.0
     @State private var latitude: Double = 0.0
     @State private var annotations: [MKPointAnnotation] = []
-//    @State private var distance: CLLocationDistance = 0
-//    @State private var travelTime: TimeInterval = 0
-//    @State private var instructions: [String] = []
+    @State private var isPark = true
+    @State private var buttonTitle = "PARK HERE"
+    
+    private let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "EEEE, MMM d YYYY"
+        return formatter
+    }()
 
     private func setCurrentLocation(){
         cancellable = locationManager.$location.sink{
             location in
-            region = MKCoordinateRegion(center: location?.coordinate ?? CLLocationCoordinate2D(), latitudinalMeters: 200, longitudinalMeters: 200)
+            region = MKCoordinateRegion(center: location?.coordinate ?? CLLocationCoordinate2D(), latitudinalMeters: 400, longitudinalMeters: 400)
         }
     }
     
@@ -34,49 +39,76 @@ struct ContentView: View {
         
         @State var coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         
-//        VStack{
-//            if locationManager.location != nil {
-//                Map(coordinateRegion: $region, interactionModes: .all, showsUserLocation: true, userTrackingMode: nil)
-//                    .accentColor(Color(.systemPink))
-//            } else{
-//                Text("Locating user location..")
-//            }
-//        }
-//            .onAppear{
-//                setCurrentLocation()
-//            }
-        
         VStack{
+            
+            HStack {
+                Text("FindMySpot")
+                    .font(.largeTitle)
+                .bold()
+                .padding(.leading, 20)
+                Spacer()
+            }
+            
+            ZStack {
             if locationManager.location == nil {
-//                MapView(location: locationManager.currentLocation)
                 MapView(coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), annotationTitle: "Parking Location")
-                    .frame(height: 300)
-                    .padding()
+                    .frame(width: 370, height: 570)
+                    .padding(.top, -140)
             } else {
                 Text("Locating user location...")
             }
+            
+                VStack {
+                    Spacer()
+                    ZStack {
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 10)
+                                .foregroundColor(.blue)
+                            .frame(width: 393, height: 120)
+                            .shadow(radius: 15)
+                            
+                            VStack {
+                                Text("\(dateFormatter.string(from: Date()))")
+                                    .font(.title2)
+                                .padding(.top, -50)
+                            }
+                        }
+                        
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 10)
+                                .foregroundColor(.white)
+                            .frame(width: 393, height: 100)
+                            .padding(.top, 70)
+                        .shadow(radius: 10)
+                            
+                            Button(action: {
+                                if isPark && buttonTitle == "PARK HERE"{
+                                    buttonTitle = "FINISHED"
+                                    saveCoordinates()
+                                } else{
+                                    buttonTitle = "PARK HERE"
+                                    removeSavedCoordinate()
+                                }
+                            }) {
+                                Text(buttonTitle)
+                                    .font(.title)
+                                    .fontWeight(.bold)
+                                    .frame(width: 340, height: 16)
+                                    .padding()
+                                    .background(Color.blue)
+                                    .foregroundColor(.white)
+                                    .cornerRadius(10)
+                            }
+                            .padding(.top, 45)
+                        }
+                    }
 
-            if let location = locationManager.currentLocation{
-                Text("Latitude: \(location.coordinate.latitude)")
-                Text("Longitude: \(location.coordinate.longitude)")
-            }
-            
-            Button("Save Coordinates"){
-                saveCoordinates()
-            }
-            
-            Button("Remove Coordinates"){
-                removeSavedCoordinate()
-            }
-            
-            Text("Saved Latitude: \(latitude)")
-            Text("Saved Longitude: \(longitude)")
-            
+                }
+                .ignoresSafeArea()
+            }    
         }
         .onAppear{
             loadCoordinates()
-//            print(longitude)
-//            print(latitude)
         }
     }
         
@@ -88,7 +120,6 @@ struct ContentView: View {
     }
     
     private func loadCoordinates(){
-        
         if let savedLongitude = UserDefaults.standard.value(forKey: "Longitude") as? Double{
             longitude = savedLongitude
             print("Saved longitude: \(longitude)")
@@ -97,13 +128,9 @@ struct ContentView: View {
             latitude = savedLatitude
             print("Saved latitude: \(latitude)")
         }
-
-//        calculateDirection(savedLatitude: latitude, savedLongitude: longitude)
     }
     
     private func removeSavedCoordinate(){
-//        annotations.removeAll()
-        
         if UserDefaults.standard.value(forKey: "Longitude") is Double{
             UserDefaults.standard.removeObject(forKey: "Longitude")
             longitude = 0.0
@@ -114,48 +141,7 @@ struct ContentView: View {
             latitude = 0.0
             print("Saved latitude: \(latitude)")
         }
-//
-//        loadCoordinates()
     }
-    
-//    private func calculateDirection(savedLatitude: Double, savedLongitude: Double){
-//        // ajg
-//        let savedLocation = CLLocation(latitude: savedLatitude, longitude: savedLongitude)
-//        let currentLocation = locationManager.currentLocation ?? CLLocation()
-//
-//        let geocoder = CLGeocoder()
-//
-//        geocoder.reverseGeocodeLocation(savedLocation) {
-//            (placemarks, error) in
-//            guard let placemark = placemarks?.first else { return }
-//
-//            let sourcePlacemark = MKPlacemark(placemark: placemark)
-//            let destinationPlacemark = MKPlacemark(coordinate: currentLocation.coordinate)
-//
-//            let sourceMapItem = MKMapItem(placemark: sourcePlacemark)
-//            let destinationMapItem = MKMapItem(placemark: destinationPlacemark)
-//
-//            let directionRequest = MKDirections.Request()
-//            directionRequest.source = sourceMapItem
-//            directionRequest.destination = destinationMapItem
-//            directionRequest.transportType = .walking
-//
-//            let directions = MKDirections(request: directionRequest)
-//            directions.calculate { (response, error) in
-//                guard let route = response?.routes.first else { return }
-//
-//                let distance = route.distance
-//                let travelTime = route.expectedTravelTime
-////                let instructions = route.steps.map { $0.instructions }
-//
-//                print("Distance: \(distance) meters")
-//                print("Travel Time: \(travelTime/60) minutes")
-////                print("Instructions: \(instructions)")
-//            }
-//        }
-//
-//    }
-    
 }
 
 struct ContentView_Previews: PreviewProvider {
