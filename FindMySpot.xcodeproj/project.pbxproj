@@ -15,7 +15,8 @@
 		831BC7D32A1D16BC00DDE11C /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831BC7D22A1D16BC00DDE11C /* LocationManager.swift */; };
 		831BC7D62A1D16DC00DDE11C /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831BC7D52A1D16DC00DDE11C /* MapView.swift */; };
 		831BC7D82A1D279300DDE11C /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831BC7D72A1D279300DDE11C /* SplashScreenView.swift */; };
-		831BC7DA2A1D291E00DDE11C /* pin.json in Resources */ = {isa = PBXBuildFile; fileRef = 831BC7D92A1D291E00DDE11C /* pin.json */; };
+		83C41F032A1E48150021C58D /* LottieUI in Frameworks */ = {isa = PBXBuildFile; productRef = 83C41F022A1E48150021C58D /* LottieUI */; };
+		83C41F092A1E49D40021C58D /* splash3.json in Resources */ = {isa = PBXBuildFile; fileRef = 83C41F082A1E49D40021C58D /* splash3.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,7 +29,7 @@
 		831BC7D22A1D16BC00DDE11C /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		831BC7D52A1D16DC00DDE11C /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		831BC7D72A1D279300DDE11C /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
-		831BC7D92A1D291E00DDE11C /* pin.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = pin.json; path = FindMySpot/pin.json; sourceTree = SOURCE_ROOT; };
+		83C41F082A1E49D40021C58D /* splash3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = splash3.json; path = Assets/splash3.json; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83C41F032A1E48150021C58D /* LottieUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,7 +68,6 @@
 				831BC7CD2A1D168100DDE11C /* Extensions */,
 				831BC7BF2A1D15B600DDE11C /* FindMySpotApp.swift */,
 				831BC7C32A1D15B700DDE11C /* Assets.xcassets */,
-				831BC7D92A1D291E00DDE11C /* pin.json */,
 				831BC7C52A1D15B700DDE11C /* Preview Content */,
 			);
 			path = FindMySpot;
@@ -76,6 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				831BC7C62A1D15B700DDE11C /* Preview Assets.xcassets */,
+				83C41F082A1E49D40021C58D /* splash3.json */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -123,6 +125,7 @@
 			);
 			name = FindMySpot;
 			packageProductDependencies = (
+				83C41F022A1E48150021C58D /* LottieUI */,
 			);
 			productName = FindMySpot;
 			productReference = 831BC7BC2A1D15B600DDE11C /* FindMySpot.app */;
@@ -153,6 +156,7 @@
 			);
 			mainGroup = 831BC7B32A1D15B600DDE11C;
 			packageReferences = (
+				83C41F012A1E48150021C58D /* XCRemoteSwiftPackageReference "LottieUI" */,
 			);
 			productRefGroup = 831BC7BD2A1D15B600DDE11C /* Products */;
 			projectDirPath = "";
@@ -168,9 +172,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83C41F092A1E49D40021C58D /* splash3.json in Resources */,
 				831BC7C72A1D15B700DDE11C /* Preview Assets.xcassets in Resources */,
 				831BC7C42A1D15B700DDE11C /* Assets.xcassets in Resources */,
-				831BC7DA2A1D291E00DDE11C /* pin.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,6 +401,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		83C41F012A1E48150021C58D /* XCRemoteSwiftPackageReference "LottieUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tfmart/LottieUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		83C41F022A1E48150021C58D /* LottieUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 83C41F012A1E48150021C58D /* XCRemoteSwiftPackageReference "LottieUI" */;
+			productName = LottieUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 831BC7B42A1D15B600DDE11C /* Project object */;
 }
