@@ -89,7 +89,7 @@ struct ContentView: View {
                             HStack {
                                 TextField("Floor", text: $inputText)
                                     .padding(.all)
-                                    .frame(width: 100, height: 48)
+                                    .frame(width: 100, height: 50)
                                     .background(Color(hex: "EFEFF0"))
                                     .cornerRadius(10)
                                     .foregroundColor(.black)
