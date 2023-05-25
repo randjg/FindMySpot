@@ -69,7 +69,7 @@ struct ContentView: View {
                     ZStack {
                         ZStack {
                             RoundedRectangle(cornerRadius: 10)
-                                .foregroundColor(Color(hex: "004197"))
+                            .foregroundColor(Color(hex: "004197"))
                             .frame(width: 393, height: 120)
                             .shadow(radius: 15)
                             

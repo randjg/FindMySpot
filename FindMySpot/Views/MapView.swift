@@ -26,7 +26,7 @@ struct MapView: UIViewRepresentable{
     func updateUIView(_ uiView: MKMapView, context: Context) {
         
         uiView.showsCompass = true
-        uiView.showsUserLocation = true
+//        uiView.showsUserLocation = true
         
         if let userTrackingButton = uiView.subviews.first(where: { $0 is MKUserTrackingButton }) as? MKUserTrackingButton {
             userTrackingButton.frame = CGRect(origin: CGPoint(x: 16, y: 16), size: CGSize(width: 30, height: 30))
