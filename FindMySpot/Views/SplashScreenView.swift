@@ -13,7 +13,7 @@ struct SplashScreenView: View {
     @State private var isActive = false
     
     var body: some View {
-        NavigationStack{
+        NavigationView{
             
             ZStack {
                 Rectangle()
@@ -26,24 +26,21 @@ struct SplashScreenView: View {
                             .scaledToFit()
                             .padding(.top, 50)
                             .frame(width: 250, height: 250)
-                            .onAppear{
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 2){
-                                    isActive = true
-                                }
-                            }
-                            .background(
-                            NavigationLink(destination: ContentView(), isActive: $isActive){
-                            }
-                                .hidden()
-                        )
-//                        Image("splash")
-//                            .resizable()
-//                            .scaledToFit()
-                        LottieView("splash3")
-                            .loopMode(.playOnce)
+                        
                     }
+                    LottieView("splash3")
+                        .loopMode(.playOnce)
                 }
             }
+            .onAppear{
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2){
+                    isActive = true
+                }
+            }
+            .fullScreenCover(isPresented: $isActive){
+                ContentView(isShowing: $isActive)
+            }
+            
         }
     }
 }

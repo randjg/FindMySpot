@@ -13,6 +13,8 @@ import CoreLocation
 
 struct ContentView: View {
     
+    @Binding var isShowing: Bool
+    
     @ObservedObject private var locationManager = LocationManager()
     @State private var region = MKCoordinateRegion.defaultRegion
     @State private var cancellable: AnyCancellable?
@@ -232,6 +234,6 @@ extension Color {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(isShowing: .constant(true))
     }
 }
