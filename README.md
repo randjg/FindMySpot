@@ -1,6 +1,6 @@
 # FindMySpot
 
-![FM](https://github.com/randjg/FindMySpot/assets/76160505/1f02f79c-a61a-478e-92fe-0095a8be5087)
+![FM](https://github.com/randjg/FindMySpot/assets/76160505/1f02f79c-a61a-478e-92fe-0095a8be5087) ![FM](https://github.com/randjg/FindMySpot/assets/76160505/550c967b-0921-45b5-b4e1-af5779057c08)
 
 ### Hello 👋
 #### For this Nano Challenge 2, I created an application called **_FindMySpot_**
