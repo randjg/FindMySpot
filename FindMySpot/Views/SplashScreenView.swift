@@ -21,7 +21,7 @@ struct SplashScreenView: View {
                     .background(Color(hex: "B8E2F2"))
                 VStack{
                     VStack {
-                        Image("logo")
+                        Image("splashlogo")
                             .resizable()
                             .scaledToFit()
                             .padding(.top, 50)
