@@ -10,6 +10,8 @@
 
 #### _FindMySpot is the perfect solution for those who frequently struggle to remember where they parked their vehicles. By allowing users to save the coordinates of their parking location, this application simplifies the process of finding their parked vehicle. With FindMySpot, no more worries about forgetting where you parked - it's all conveniently stored for easy finding._
 
+#### You can read my article on : https://randyjgunawan.medium.com/find-your-vehicle-with-ease-introducing-findmyspot-your-trusty-parking-companion-492451666f56
+
 ### Video Demo
 
 https://github.com/randjg/FindMySpot/assets/76160505/2445f8a6-4d71-414c-ae35-de2975403d9d
